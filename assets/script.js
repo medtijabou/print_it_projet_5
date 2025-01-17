@@ -17,41 +17,43 @@ const slides = [
     }
 ];
 
+
 // Sélection des éléments
-const bannerImages = document.getElementsByClassName('banner-img');
-const bannerTagline = document.getElementsByClassName('text');
-const sliderDots = document.querySelectorAll('.dot');
+const bannerImage = document.querySelector('.banner-img');
+const bannerText = document.querySelector('.text');
+const dots = document.querySelectorAll('.dot');
 const arrowLeft = document.querySelector('.arrow.arrow_left');
 const arrowRight = document.querySelector('.arrow.arrow_right');
 
 let index = 0;
 
-// Initialisation du premier slide
-bannerImages[0].src = "./assets/images/slideshow/" + slides[index].image;
-bannerTagline[0].innerHTML = slides[index].tagLine;
-sliderDots[index].classList.add('dot_selected'); // Active le point correspondant
-
-// Gestion des clics sur les flèches
-arrowLeft.addEventListener('click', () => {
-    ChangeSlide(-1);
-});
-arrowRight.addEventListener('click', () => {
-    ChangeSlide(1);
-});
-
-// Fonction pour changer de slide
-function ChangeSlide(sens) {
-    // Mise à jour de l'index
-    index += sens;
-
-    if (index > slides.length - 1) index = 0;
-    if (index < 0) index = slides.length - 1;
-
-    // Mise à jour des images et des textes
-    bannerImages[0].src = "./assets/images/slideshow/" + slides[index].image;
-    bannerTagline[0].innerHTML = slides[index].tagLine;
-
-    // Mise à jour des points (dots)
-    sliderDots.forEach(dot => dot.classList.remove('dot_selected'));
-    sliderDots[index].classList.add('dot_selected');
+// Initialisation
+function initSlide() {
+    bannerImage.src = `./assets/images/slideshow/${slides[index].image}`;
+    bannerText.innerHTML = slides[index].tagLine;
+    dots.forEach(dot => dot.classList.remove('dot_selected'));
+    dots[index].classList.add('dot_selected');
 }
+initSlide();
+
+// Changement de slide
+function changeSlide(direction) {
+    index = (index + direction + slides.length) % slides.length; // Gestion du débordement
+    initSlide();
+}
+
+// Événements sur les flèches
+arrowLeft.addEventListener('click', () => changeSlide(-1));
+arrowRight.addEventListener('click', () => changeSlide(1));
+
+
+
+//Événements sur les dots(en-plus)
+dots.forEach((dot, dotIndex) => {
+    dot.addEventListener('click', () => {
+        if (index !== dotIndex) { // Vérifie si le dot cliqué est différent du slide actuel
+            index = dotIndex; // Change l'index pour celui correspondant au dot cliqué
+            initSlide(); // Met à jour le slide
+        }
+    });
+});
