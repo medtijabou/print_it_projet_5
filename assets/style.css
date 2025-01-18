@@ -53,9 +53,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body {
 
-}
 section {
 	margin-block: 6em;
 }
@@ -292,7 +290,101 @@ footer div {
 }
 
 @media all and (max-width: 1250px) {
+
+
 	#contact > article {
 		flex: 2;
+	}
+}
+
+@media (max-width: 1025px) {
+	header{
+		display: flex;
+        flex-direction:column;
+	    row-gap: 60px;
+	}
+	header .btn{
+		width: 56%;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 30px;
+	}
+    
+	#banner{
+		width: 95%;
+		margin:auto;
+	}
+	#banner p{
+		font-size: 18px;
+	}
+	#banner span{
+		font-size: 16px;
+	}
+	.arrow_left{
+		height: 50px;
+		bottom: 20px;
+	}
+	.arrow_right{
+		height: 50px;
+		bottom: 20px;
+
+	}
+	#about-us{
+		margin-block: 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+	h2{
+		font-size: 24px;
+	}
+	aside img{
+		width:100% ;
+		border-radius: 5px;
+		box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.50);
+
+	}
+	#products{
+		display: flex;
+		flex-direction: column;
+		margin-block: 5rem;
+	}
+	#products div{
+		padding: 0 0 45px 0;
+	}
+	#question p{
+		padding-left: 10px;
+	}
+	section{
+		margin-block: 3rem;
+	}
+	#why-us{
+		padding: 0;
+	}
+	#why-us p{
+    display: flex;
+
+    width: 70%;
+    height: 100%;
+    overflow: visible;
+    font-size: 14px;
+	text-align: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+	#contact .container{
+	  flex-direction:column;
+	  padding: 1rem;
+	}
+	#contact .container > div > div{
+		flex-direction: column;
+		padding-bottom: 2rem;
+	}
+	#Loupe{
+		width: 100%;
+		border-radius: 10px;
+	}
+	footer {
+	flex-direction: column;
+	row-gap: 30px;
 	}
 }
