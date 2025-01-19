@@ -126,11 +126,23 @@ header {
 	cursor: pointer;
  }
 .arrow_left {
+	height: 30px;
 	left: 10px;
+	transition: height 0.3s ease;
+}
+.arrow_left:hover{
+height: 80px;
+	
 }
 .arrow_right {
 	right: 10px;
+	height: 30px;
+	transition: height 0.3s ease;
 }
+.arrow_right:hover{
+	height: 80px;
+}
+
 /* Gestion des points du carrousel */
 .dots {
 	position: absolute;
@@ -149,6 +161,12 @@ header {
 .dot_selected {
 	background-color: #fff;
 }
+#black-theme {
+    color: black;
+	filter: brightness(0);
+    border-color: black; /* Si les flèches ou dots ont des bordures */
+}
+
 /* Fin du code CSS pour le carousel */
 #banner p {
 	font-family: 'Roboto Slab', sans-serif;
@@ -296,7 +314,7 @@ footer div {
 		flex: 2;
 	}
 }
-
+/* responsive */
 @media (max-width: 1025px) {
 	header{
 		display: flex;
@@ -320,15 +338,9 @@ footer div {
 	#banner span{
 		font-size: 16px;
 	}
-	.arrow_left{
-		height: 50px;
-		bottom: 20px;
-	}
-	.arrow_right{
-		height: 50px;
-		bottom: 20px;
-
-	}
+	.arrow {
+		display: none;
+	  }
 	#about-us{
 		margin-block: 1rem;
 		display: flex;
@@ -370,10 +382,15 @@ footer div {
 	text-align: left;
 	padding-left: 10px;
 	padding-right: 10px;
+	
+	}
+	#contact{
+		display: none;
 	}
 	#contact .container{
 	  flex-direction:column;
 	  padding: 1rem;
+	  
 	}
 	#contact .container > div > div{
 		flex-direction: column;
@@ -384,6 +401,7 @@ footer div {
 		border-radius: 10px;
 	}
 	footer {
+	
 	flex-direction: column;
 	row-gap: 30px;
 	}
